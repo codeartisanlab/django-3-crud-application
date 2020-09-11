@@ -3,7 +3,11 @@ from .models import Post
 from django.contrib import messages
 from django.core.paginator import Paginator
 def home(request):
-    posts=Post.objects.all()
+    if 'q' in request.GET:
+        q=request.GET['q']
+        posts=Post.objects.filter(title__icontains=q)
+    else:
+        posts=Post.objects.all()
     # Pagintion
     paginator=Paginator(posts,2)
     page_number=request.GET.get('page')
