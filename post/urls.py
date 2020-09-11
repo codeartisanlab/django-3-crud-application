@@ -5,4 +5,5 @@ urlpatterns=[
     path('add',views.add,name='add'),
     path('update/<int:id>',views.update,name='update'),
     path('delete/<int:id>',views.delete,name='delete'),
+    path('load-more',views.load_more,name='load-more'),
 ]
